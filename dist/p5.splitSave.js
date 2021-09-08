@@ -1,0 +1,1 @@
+(()=>{"use strict";!function(){let t=window.p5;t.prototype.splitSave=function(e,o,i){let r=t.prototype.floor(this.width/o),s=t.prototype.floor(this.height/i),h=this.createGraphics(r,s,this._renderer);for(let t=0;t<o;t++)for(let o=0;o<i;o++)h.clear(),h.image(this,0,0,r,s,t*r,o*s,r,s),h.save(`${e}-${t}-${o}`)}}()})();

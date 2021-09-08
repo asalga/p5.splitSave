@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>p5.splitSave</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.2.0/lib/p5.js"></script>
+    <script src="p5.splitSave.js"></script>
+    <script>
+        new p5(p => {
+
+            p.setup = _ => {
+                p.createCanvas(600, 300);
+                p.pixelDensity(1);
+                setGradient(0, 0, p.width, p.height, p.color(33, 66, 199), p.color(199, 66, 33), p.Y_AXIS);
+                p.push();
+                p.textSize(100);
+                p.textAlign(p.CENTER, p.CENTER);
+                p.translate(p.width / 2, p.height / 2);
+                p.stroke(255);
+                p.strokeWeight(5);
+                p.fill(0);
+                p.text('p5.splitSave', 0, 0);
+                p.pop();
+                p.splitSave('splitSave', 3, 1);
+
+                // For hero image
+                // p.noFill();
+                // p.strokeWeight(1);
+                // p.stroke(0);
+                // for (let x = 0; x < p.width; x += p.width / 3) {
+                //     for (let y = 0; y < p.height; y += p.height / 3) {
+                //         p.rect(x, y, p.width / 3, p.height / 3);
+                //     }
+                // }
+            }
+
+            p.keyPressed = evt => {
+                if (evt.key === 's') {
+                    p.splitSave('splitSave', 3, 1);
+                }
+            }
+
+            /*
+                From p5js.org
+            */
+            function setGradient(x, y, w, h, c1, c2, axis) {
+                p.noFill();
+
+                if (axis === p.Y_AXIS) {
+                    // Top to bottom gradient
+                    for (let i = y; i <= y + h; i++) {
+                        let inter = p.map(i, y, y + h, 0, 1);
+                        let c = p.lerpColor(c1, c2, inter);
+                        p.stroke(c);
+                        p.line(x, i, x + w, i);
+                    }
+                } else if (axis === p.X_AXIS) {
+                    // Left to right gradient
+                    for (let i = x; i <= x + w; i++) {
+                        let inter = p.map(i, x, x + w, 0, 1);
+                        let c = p.lerpColor(c1, c2, inter);
+                        p.stroke(c);
+                        p.line(i, y, i, y + h);
+                    }
+                }
+            }
+        });
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>
