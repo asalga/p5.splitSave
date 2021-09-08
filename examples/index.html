@@ -14,7 +14,7 @@
         new p5(p => {
 
             p.setup = _ => {
-                p.createCanvas(600, 300);
+                p.createCanvas(600, 600);
                 p.pixelDensity(1);
                 setGradient(0, 0, p.width, p.height, p.color(33, 66, 199), p.color(199, 66, 33), p.Y_AXIS);
                 p.push();
@@ -26,7 +26,6 @@
                 p.fill(0);
                 p.text('p5.splitSave', 0, 0);
                 p.pop();
-                p.splitSave('splitSave', 3, 1);
 
                 // For hero image
                 // p.noFill();
@@ -41,7 +40,7 @@
 
             p.keyPressed = evt => {
                 if (evt.key === 's') {
-                    p.splitSave('splitSave', 3, 1);
+                    p.splitSave('splitSave', 2, 2);
                 }
             }
 
